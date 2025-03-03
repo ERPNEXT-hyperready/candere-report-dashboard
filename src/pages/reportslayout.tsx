@@ -28,7 +28,7 @@ const ReportsLayout = () => {
 //             onClick={() => navigate("/stockreport/Stock Report")} // Redirect on click
 
   return (
-    <div className="p-4 gradient h-full w-full gradient">
+    <div className="p-4  h-full w-full ">
         <div className="flex gap-2">
         <div
           className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:text-blue-500"
@@ -51,8 +51,8 @@ const ReportsLayout = () => {
         {reportRoutes.map((report, index) => (
           <Card
             key={index}
-            className={`quick-card ${report.bgColor} p-4 rounded-lg cursor-pointer hover:shadow-lg`}
-            // className={`quick-card p-4 rounded-lg cursor-pointer hover:shadow-lg gradient`}
+            className={`quick-card ${report.bgColor} p-4 rounded-lg cursor-pointer font-bold hover:shadow-lg`}
+            // className={`quick-card p-4 rounded-lg cursor-pointer hover:shadow-lg `}
 
             onClick={() => navigate(`${report.path}/${encodeURIComponent(report.name)}`)}
             >
@@ -60,7 +60,7 @@ const ReportsLayout = () => {
               <span className="card-icon green">
                 <FileChartColumn size={20} />
               </span>
-              <span className="card-title">{report.name}</span>
+              <span className="card-title font-bold">{report.name}</span>
             </CardContent>
           </Card>
         ))}

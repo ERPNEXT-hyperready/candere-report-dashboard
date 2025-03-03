@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import authService from "../features/auth/authService";
 import { Button } from "@/components/ui/button";
-import { DatePicker } from "@/components/datepicker/date-picker";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { BsFillFileEarmarkExcelFill } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
 import { CircleChevronLeft } from "lucide-react";
+import DateRangePicker from "@/components/fromtodate/romtodate";
 
 function Purchasereport() {
   const navigate = useNavigate();
@@ -21,10 +19,10 @@ function Purchasereport() {
   });
 
   // Handle input change
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFilters((prev) => ({ ...prev, [name]: value }));
-  };
+  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value } = e.target;
+  //   setFilters((prev) => ({ ...prev, [name]: value }));
+  // };
 
   // Handle download with filters
   const handleDownload = async () => {
@@ -32,7 +30,7 @@ function Purchasereport() {
   };
 
   return (
-    <div className="flex flex-col gap-2 h-full p-2 gradient">
+    <div className="flex flex-col gap-2 h-full p-2 ">
       <div className="text-xl font-bold">
         <div className="flex gap-2">
           <div
@@ -43,53 +41,22 @@ function Purchasereport() {
           </div>
           <h1 className="text-2xl font-bold ">Purchase Report</h1>
         </div>
-        <div className="lg:grid lg:grid-cols-4 lg:gap-4 md:grid md:grid-cols-1 md:gap-2 pt-2">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-4 md:grid md:grid-cols-1 md:gap-2 pt-2">
           <div className="flex flex-col gap-1">
-            <Label htmlFor="fromDate" className="text-slate-600 ">
-              From Date
-            </Label>
-            <Input
-              type="date"
-              name="fromDate"
-              className="border border-black focus:border-black focus:ring-0"
-              value={filters.fromDate}
-              onChange={handleInputChange}
-              max={new Date().toISOString().split("T")[0]} // Restrict to today or earlier
+            <DateRangePicker
+              // className="flex items-center gap-1"
+              fromLabel="Start Date"
+              toLabel="End Date"
+              fromValue={filters.fromDate}
+              toValue={filters.toDate}
+              onFromChange={(date) =>
+                setFilters({ ...filters, fromDate: date })
+              }
+              onToChange={(date) => setFilters({ ...filters, toDate: date })}
+              required={true}
+              disableFutureDates={true}
             />
           </div>
-          <div className="flex flex-col gap-1">
-            <Label htmlFor="toDate" className="text-slate-600 ">
-              To Date
-            </Label>
-            <Input
-              type="date"
-              name="toDate"
-              className="border border-black focus:border-black focus:ring-0"
-              value={filters.toDate}
-              onChange={handleInputChange}
-              max={new Date().toISOString().split("T")[0]} // Restrict to today or earlier
-            />
-          </div>
-          {/* <div className="flex flex-col gap-1">
-                        <Label htmlFor="warehouse" className="text-slate-600 ">Ware House</Label>
-                        <Input 
-                            type="text" 
-                            name="warehouse" 
-                            placeholder="Warehouse" 
-                            value={filters.name} 
-                            onChange={handleInputChange} 
-                        />
-                    </div> */}
-          {/* <div className="flex flex-col gap-1">
-                        <Label htmlFor="barcode" className="text-slate-600">Bar Code</Label>
-                        <Input 
-                            type="text" 
-                            name="barcode" 
-                            placeholder="Barcode" 
-                            value={filters.barcode} 
-                            onChange={handleInputChange} 
-                        />
-                    </div> */}
         </div>
       </div>
       <div className="flex gap-2">

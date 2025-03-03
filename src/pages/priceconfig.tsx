@@ -74,7 +74,7 @@ const PriceConfig = () => {
   };
 
   return (
-    <div className="p-4 gradient h-full w-full ">
+    <div className="p-4  h-full w-full ">
       <div className="flex gap-2">
         <div
           className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:text-blue-500"
@@ -101,7 +101,7 @@ const PriceConfig = () => {
               className={`quick-card transition duration-300 ease-in-out cursor-pointer ${getCardColors(
                 report.key
               )}`}
-              // className='quick-card transition duration-300 ease-in-out cursor-pointer gradient'
+              // className='quick-card transition duration-300 ease-in-out cursor-pointer '
 
               onClick={() =>
                 navigate(report.path, {

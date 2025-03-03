@@ -2,7 +2,7 @@ import * as React from "react";
 import {
   BookOpen,
   Bot,
-  Command,
+  // Command,
   LifeBuoy,
   Send,
   Settings2,
@@ -22,7 +22,6 @@ import {
 } from "@/components/ui/sidebar";
 import CandereC from "@/assets/CandereC.svg";
 import { useNavigate } from "react-router-dom";
-import { Button } from "react-day-picker";
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const user = JSON.parse(localStorage.getItem("user") || "{}"); // Ensure it's an object
   console.log(user.full_name, ".>>>>>>>>>>>>>>>>>>>>>>>..");
@@ -40,11 +39,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         icon: SquareTerminal,
         isActive: true,
       },
-      {
-        title: "Profile",
-        url: "/profile",
-        icon: Bot,
-      },
+      // {
+      //   title: "Profile",
+      //   url: "/profile",
+      //   icon: Bot,
+      // },
       {
         title: "Reports",
         url: "#",
@@ -121,8 +120,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       className="top-[--header-height] !h-[calc(100svh-var(--header-height))] "
       {...props}
     >
-      <SidebarHeader className="gradient">
-        <SidebarMenu className="gradient">
+      <SidebarHeader className="">
+        <SidebarMenu className="">
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
@@ -139,7 +138,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </div>
 
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold pt-2">Candere</span>
+                  <span className="truncate font-semibold pt-2 text-xl text-gray-800">Candere</span>
                   <span className="truncate text-xs"></span>
                 </div>
               </a>
@@ -147,7 +146,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent className="gradient">
+      <SidebarContent className="text-gray-800">
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>

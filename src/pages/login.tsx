@@ -1,15 +1,15 @@
 import React, { useState, FormEvent, useEffect } from "react";
 import "./login.css";
 import { useDispatch, useSelector } from "react-redux";
-import { reset, login, logout } from "../features/auth/authSlice";
+import {  login } from "../features/auth/authSlice";
 import { toast } from "sonner";
-import { useActionData, useNavigate } from "react-router-dom";
-import { AppDispatch, RootState } from "../app/store";
+import {  useNavigate } from "react-router-dom";
+import { AppDispatch } from "../app/store";
 import { Button } from "@/components/ui/button";
 import { MailOpen } from "lucide-react";
 import CandereKalyan from "@/assets/Canderekalyan.svg";
 
-import Loader from "../components/loader/loader";
+// import Loader from "../components/loader/loader";
 
 // interface LoginProps {
 //   onLogin: (credentials: { email: string; password: string }) => void;

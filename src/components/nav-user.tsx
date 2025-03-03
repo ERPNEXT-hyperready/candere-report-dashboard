@@ -1,11 +1,6 @@
 "use client"
 
-import {
-  BadgeCheck,
-  Bell,
-  LogOut,
-  Sparkles,
-} from "lucide-react"
+
 
 import {
   Avatar,
@@ -15,10 +10,10 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
+  // DropdownMenuGroup,
+  // DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
+  // DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
@@ -27,7 +22,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { CaretSortIcon, ComponentPlaceholderIcon } from "@radix-ui/react-icons"
+import { CaretSortIcon } from "@radix-ui/react-icons"
 import { useDispatch } from "react-redux"
 import AlertDialog  from "../components/alertdialog/alertdialog"
 
@@ -41,10 +36,9 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
-  const dispatch = useDispatch();
 
   return (
-    <SidebarMenu className="gradient">
+    <SidebarMenu className="">
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

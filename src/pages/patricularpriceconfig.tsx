@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function IndividualPriceConfig() {
   const location = useLocation();
-  const { type } = useParams();
+  // const { type } = useParams();
   const navigate = useNavigate();
 
   const purityKey = location.state?.key || "gold_purities"; // Default to gold if not found
@@ -65,13 +65,13 @@ function IndividualPriceConfig() {
   console.log("Initial Data:", initialData);
   console.log("Fetched Data:", purities);
   // Handle row click to update inputs
-  const handleRowClick = (purity: any) => {
-    setSelectedPurity({
-      frontend_label: purity.frontend_label,
-      rate: purity.rate.toString(),
-      parentfield: purity.parentfield,
-    });
-  };
+  // const handleRowClick = (purity: any) => {
+  //   setSelectedPurity({
+  //     frontend_label: purity.frontend_label,
+  //     rate: purity.rate.toString(),
+  //     parentfield: purity.parentfield,
+  //   });
+  // };
   const parentfieldMapping: Record<string, string> = {
     gold_purities: "Gold",
     diamond_purities: "Diamond",
@@ -87,7 +87,7 @@ function IndividualPriceConfig() {
   
 
   return (
-    <div className="flex flex-col gap-4 h-full  p-2 gradient">
+    <div className="flex flex-col gap-4 h-full  p-2 ">
        <div className="flex gap-2">
         <div
           className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:text-blue-500"

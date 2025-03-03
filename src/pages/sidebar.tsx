@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 function Sidebar() {
     const [isSidebarOpen,setisSidebarOpen]= useState(false)
+    console.log(setisSidebarOpen);
+    
     return (
         <div className="flex h-full relative bg-gradient-to-tr from-gray-50 to-gray-100 dark:bg-slate-950 dark:bg-none">
           <div
