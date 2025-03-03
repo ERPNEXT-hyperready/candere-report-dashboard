@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import authService from "../features/auth/authService";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {  useLocation } from "react-router-dom";
+import {  useLocation, useParams } from "react-router-dom";
 import getGridData from "../components/Table/getGridData";
 import LeadscontrolTable from "../components/Table/tablepage";
 import { CircleChevronLeft } from "lucide-react";
@@ -10,9 +10,10 @@ import { useNavigate } from "react-router-dom";
 
 function IndividualPriceConfig() {
   const location = useLocation();
-  // const { type } = useParams();
+  const { type } = useParams();
   const navigate = useNavigate();
-
+  console.log(type,",,,,,,,,,,,,,,,,,,,,,,,,,,,,");
+  
   const purityKey = location.state?.key || "gold_purities"; // Default to gold if not found
   const initialData = location.state?.data || [];
 
@@ -23,6 +24,7 @@ function IndividualPriceConfig() {
     rate: initialData?.[0]?.rate?.toString() || "",
     parentfield: initialData?.[0]?.parentfield || "",
   });
+console.log(setSelectedPurity,"hjkl;uyiop[bnmk,l;");
 
   useEffect(() => {
 
@@ -41,7 +43,16 @@ function IndividualPriceConfig() {
         console.log("Fetching data...");
         const data = await authService.price_config();
         console.log("API Response:", data);
+        const message: Record<string, any[]> = data?.message || {};
 
+        const formattedNames: Record<string, string[]> = {};
+
+        Object.entries(parentfieldMapping).forEach(([key, name]) => {
+          formattedNames[key] = message[key] 
+            ? message[key].map((item: any) => item.frontend_label) 
+            : [name]; // Set default name if key is missing
+        });
+    
         if (data?.message?.[purityKey]?.length > 0) {
           console.log("✅ Setting purities:", data.message[purityKey]);
           setPurities(data.message[purityKey]);
@@ -64,24 +75,27 @@ function IndividualPriceConfig() {
   console.log("Purity Key:", purityKey);
   console.log("Initial Data:", initialData);
   console.log("Fetched Data:", purities);
+  console.log("Selected Parent Field:", selectedPurity.parentfield);
+  
   // Handle row click to update inputs
   // const handleRowClick = (purity: any) => {
-  //   setSelectedPurity({
-  //     frontend_label: purity.frontend_label,
-  //     rate: purity.rate.toString(),
-  //     parentfield: purity.parentfield,
-  //   });
-  // };
-  const parentfieldMapping: Record<string, string> = {
-    gold_purities: "Gold",
-    diamond_purities: "Diamond",
-    platinum_purities: "Platinum",
-    silver_purities: "Silver",
-    gemstone_purities: "Gemstone",
-    zirconia_purities: "Zirconia",
-  };
-  const formattedName =
-    parentfieldMapping[selectedPurity.parentfield] || "Price Config";
+    //   setSelectedPurity({
+      //     frontend_label: purity.frontend_label,
+      //     rate: purity.rate.toString(),
+      //     parentfield: purity.parentfield,
+      //   });
+      // };
+      const parentfieldMapping: Record<string, string> = {
+        gold_purities: "Gold",
+        diamond_purities: "Diamond",
+        platinum_purities: "Platinum",
+        silver_purities: "Silver",
+        gemstone_purities: "Gemstone",
+        zirconia_purities: "Zirconia",
+      };
+      const formattedName =
+      parentfieldMapping[selectedPurity?.parentfield] || type;
+      console.log("Mapped Name:", parentfieldMapping[selectedPurity?.parentfield],"ppppppppppppppppppppppppppiiiiiiiiiiiiiii");
 
   const { rowData, columnDefs } = getGridData(purities );
   
