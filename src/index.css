@@ -112,6 +112,21 @@
     }
   }
 
+  @layer utilities{
+    .gradient {
+      @apply bg-gradient-to-br from-slate-300 via-slate-100 to-white
+    }
+
+    .gradient-for-individual-price {
+      @apply bg-gradient-to-br from-cyan-50 via-cyan-100 to-white
+    }
+
+    .gradient-for-individual-price {
+      @apply bg-gradient-to-br from-cyan-50 via-cyan-100 to-white
+    }
+
+  }
+
   @layer base {
     * {
       @apply border-border;

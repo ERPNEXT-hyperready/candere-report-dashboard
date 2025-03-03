@@ -5,11 +5,13 @@ import { Label } from "@/components/ui/label";
 import { useParams, useLocation } from "react-router-dom";
 import getGridData from "../components/Table/getGridData";
 import LeadscontrolTable from "../components/Table/tablepage";
+import { CircleChevronLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function IndividualPriceConfig() {
   const location = useLocation();
   const { type } = useParams();
-  console.log(type, "lllllllllllllllllllllllllllllll");
+  const navigate = useNavigate();
 
   const purityKey = location.state?.key || "gold_purities"; // Default to gold if not found
   const initialData = location.state?.data || [];
@@ -23,12 +25,8 @@ function IndividualPriceConfig() {
   });
 
   useEffect(() => {
-    console.log("🔥 Running useEffect...");
-    console.log("purityKey:", purityKey);
-    console.log("initialData:", initialData);
 
     if (initialData.length > 0) {
-      console.log("🚀 Initial data available, setting purities...");
       setPurities(initialData); // ✅ Set state from initialData
       setSelectedPurity({
         frontend_label: initialData[0]?.frontend_label || "",
@@ -86,13 +84,20 @@ function IndividualPriceConfig() {
     parentfieldMapping[selectedPurity.parentfield] || "Price Config";
 
   const { rowData, columnDefs } = getGridData(purities );
-
-  console.log(rowData,columnDefs,"ppppppppppppppppppppppppppppp");
   
 
   return (
-    <div className="flex flex-col gap-4 h-full">
-      <h1 className="text-xl font-bold">{formattedName} Price Config</h1>
+    <div className="flex flex-col gap-4 h-full  p-2 gradient">
+       <div className="flex gap-2">
+        <div
+          className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:text-blue-500"
+          onClick={() => navigate("/priceconfig")}
+        >
+          <CircleChevronLeft className="text-gray-700" size={24} />
+        </div>
+
+      <h1 className="text-xl font-bold">{formattedName} Price </h1>
+      </div>
 
       {/* Inputs for selected row */}
       <div className="grid grid-cols-2 gap-4">
@@ -108,7 +113,7 @@ function IndividualPriceConfig() {
         </div>
       </div>
 
-      <div className="w-full h-full">
+      <div className="w-full h-full p-4 ">
         <LeadscontrolTable
           columnDefs={columnDefs}
           rowData={rowData}

@@ -276,6 +276,7 @@
     align-items: center;
     font-size: 16px;
     font-weight: 600;
+    color: black;
   }
   
   .icon {
@@ -286,7 +287,7 @@
     align-items: center;
     justify-content: center;
     margin-right: 8px;
-    color: white;
+    color: black;
   }
   
   .icon.green {

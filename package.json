@@ -33,6 +33,9 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "date-fns": "^4.1.0",
+    "embla-carousel": "^8.5.2",
+    "embla-carousel-autoplay": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "formik": "^2.4.6",
     "lodash": "^4.17.21",
     "lucide-react": "^0.476.0",
@@ -51,6 +54,7 @@
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^10.0.0",
+    "vaul": "^1.1.2",
     "xlsx": "^0.18.5",
     "yup": "^1.4.0"
   },

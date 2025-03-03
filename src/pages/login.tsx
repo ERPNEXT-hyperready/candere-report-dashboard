@@ -1,43 +1,45 @@
-import React, { useState, FormEvent, useEffect } from 'react';
-import './login.css';
-import { useDispatch ,useSelector} from 'react-redux';
-import {reset,login,logout} from '../features/auth/authSlice'
-import { toast } from "sonner"
-import { useActionData, useNavigate } from 'react-router-dom';
-import { AppDispatch, RootState } from '../app/store'; 
-import { Button } from "@/components/ui/button"
-import { MailOpen } from "lucide-react"
-import CandereKalyan from '@/assets/Canderekalyan.svg'
+import React, { useState, FormEvent, useEffect } from "react";
+import "./login.css";
+import { useDispatch, useSelector } from "react-redux";
+import { reset, login, logout } from "../features/auth/authSlice";
+import { toast } from "sonner";
+import { useActionData, useNavigate } from "react-router-dom";
+import { AppDispatch, RootState } from "../app/store";
+import { Button } from "@/components/ui/button";
+import { MailOpen } from "lucide-react";
+import CandereKalyan from "@/assets/Canderekalyan.svg";
 
-import Loader from '../components/loader/loader'
+import Loader from "../components/loader/loader";
 
 // interface LoginProps {
 //   onLogin: (credentials: { email: string; password: string }) => void;
 // }
 
 const Login: any = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>(); // ✅ Correctly typed dispatch
-  const {user,isError,isSuccess,isLoading,message} = useSelector((state:any)=> state.auth)
+  const { user, isError, isSuccess, isLoading, message } = useSelector(
+    (state: any) => state.auth
+  );
   interface FormData {
     email: string;
     password: string;
   }
-  
+
   const [formData, setFormData] = useState<FormData>({
-    email: "",  // Fixed typo 'emai' -> 'email'
-    password: ""
+    email: "", // Fixed typo 'emai' -> 'email'
+    password: "",
   });
 
-useEffect(() => {
-  if(isError){
-    toast.error(message)
-  }
-  if(isSuccess){
-    // navigate('/dashboard')
-    // dispatch(reset())
-  }
-},[user,isError,isSuccess,message,navigate,dispatch])
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    if (isSuccess) {
+      // navigate('/dashboard')
+      // dispatch(reset())
+    }
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -48,22 +50,22 @@ useEffect(() => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(e.target,"..................////////");
-    
+    console.log(e.target, "..................////////");
+
     const userData = {
       email: formData.email,
-      password: formData.password
-    }
+      password: formData.password,
+    };
 
     dispatch(login(userData));
-
   };
 
   return (
     <div className="min-h-screen w-screen grid grid-cols-1 lg:grid-cols-2 bg-white">
       <div className="w-full hidden lg:block">
-        <img src="https://candere-file.s3.ap-south-1.amazonaws.com/diamond.jpg" alt="Gold" className="h-screen w-full" />
+        <img srcSet="https://candere-file.s3.ap-south-1.amazonaws.com/diamond.jpg" alt="Gold" className="h-screen w-full" />
       </div>
+
       <div className="flex justify-center items-center">
         <div className="bg-white p-8 rounded-lg sm:w-96">
           <div className="flex justify-center items-center mb-4">
@@ -76,7 +78,10 @@ useEffect(() => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email
               </label>
               <input
@@ -93,7 +98,10 @@ useEffect(() => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <input
@@ -115,7 +123,7 @@ useEffect(() => {
                 className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-1"
                 disabled={isLoading}
               >
-                <MailOpen /> 
+                <MailOpen />
                 {isLoading ? "Logging in..." : "Login"}
               </Button>
             </div>

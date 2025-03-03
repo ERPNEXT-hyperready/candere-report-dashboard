@@ -44,7 +44,7 @@ export function NavUser({
   const dispatch = useDispatch();
 
   return (
-    <SidebarMenu>
+    <SidebarMenu className="gradient">
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

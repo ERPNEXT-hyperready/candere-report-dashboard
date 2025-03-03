@@ -78,11 +78,13 @@ const getReportData = async (filters:any,report_name:any) => {
     const payload = {
       report_name: report_name,
       report_type: "json",
+      limit:1000,
+      offset:1,
       filters: [
         {
           from_date: filters.fromDate,
           to_date: filters.toDate,
-          name: filters.name,
+          // name: filters.name,
         },
       ],
     };

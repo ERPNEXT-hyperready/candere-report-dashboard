@@ -20,12 +20,13 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import CandereC from '@/assets/CandereC.svg'
-
+import CandereC from "@/assets/CandereC.svg";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-day-picker";
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const user = JSON.parse(localStorage.getItem("user") || "{}"); // Ensure it's an object
   console.log(user.full_name, ".>>>>>>>>>>>>>>>>>>>>>>>..");
-
+  const navigate = useNavigate();
   const data = {
     user: {
       name: user?.full_name,
@@ -117,11 +118,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   };
   return (
     <Sidebar
-      className="top-[--header-height] !h-[calc(100svh-var(--header-height))]"
+      className="top-[--header-height] !h-[calc(100svh-var(--header-height))] "
       {...props}
     >
-      <SidebarHeader>
-        <SidebarMenu>
+      <SidebarHeader className="gradient">
+        <SidebarMenu className="gradient">
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
@@ -129,12 +130,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
                 </div> */}
                 <div className="w-8 hidden lg:block">
-                  <img
-                    src={CandereC}
-                    alt="Gold"
-                    className="h-screen w-full"
-                  />
+                  <div
+                    onClick={() => navigate("/dashboard")}
+                    className="cursor-pointer"
+                  >
+                    <img src={CandereC} alt="Gold" className="h-auto w-full" />
+                  </div>
                 </div>
+
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold pt-2">Candere</span>
                   <span className="truncate text-xs"></span>
@@ -144,7 +147,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="gradient">
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
