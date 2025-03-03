@@ -23,7 +23,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { CaretSortIcon } from "@radix-ui/react-icons"
-import { useDispatch } from "react-redux"
+// import { useDispatch } from "react-redux"
 import AlertDialog  from "../components/alertdialog/alertdialog"
 
 export function NavUser({

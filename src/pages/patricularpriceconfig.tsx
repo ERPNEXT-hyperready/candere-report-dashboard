@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import authService from "../features/auth/authService";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useParams, useLocation } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 import getGridData from "../components/Table/getGridData";
 import LeadscontrolTable from "../components/Table/tablepage";
 import { CircleChevronLeft } from "lucide-react";
