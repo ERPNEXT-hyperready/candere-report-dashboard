@@ -30,7 +30,7 @@ const Stockreport = () => {
     <div className=" flex flex-col gap-2 h-full p-2 ">
       <div className="flex gap-2">
         <div
-          className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:text-blue-500"
+          className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:text-blue-500 pt-1"
           onClick={() => navigate("/reports")}
         >
           <CircleChevronLeft className="text-gray-700" size={24} />

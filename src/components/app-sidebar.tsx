@@ -79,11 +79,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           // },
         ],
       },
-      {
-        title: "Settings",
-        url: "/settings",
-        icon: Settings2,
-      },
+      // {
+      //   title: "Settings",
+      //   url: "/settings",
+      //   icon: Settings2,
+      // },
     ],
     navSecondary: [
       {

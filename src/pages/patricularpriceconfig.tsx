@@ -98,7 +98,6 @@ console.log(setSelectedPurity,"hjkl;uyiop[bnmk,l;");
       console.log("Mapped Name:", parentfieldMapping[selectedPurity?.parentfield],"ppppppppppppppppppppppppppiiiiiiiiiiiiiii");
 
   const { rowData, columnDefs } = getGridData(purities );
-  
 
   return (
     <div className="flex flex-col gap-4 h-full  p-2 ">

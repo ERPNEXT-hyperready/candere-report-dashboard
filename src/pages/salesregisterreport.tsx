@@ -34,12 +34,12 @@ function SalesRegisterReport() {
       <div className="text-xl font-bold">
         <div className="flex gap-2">
           <div
-            className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:text-blue-500"
+            className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:text-blue-500 pt-1"
             onClick={() => navigate("/reports")}
           >
             <CircleChevronLeft className="text-gray-700" size={24} />
           </div>
-          <h1 className="text-2xl font-bold ">Sales Register Report</h1>
+          <h1 className="text-2xl font-bold ">Sales Report</h1>
         </div>
         <div className="lg:grid lg:grid-cols-2 lg:gap-4 md:grid md:grid-cols-1 md:gap-2 pt-2">
           <div className="flex flex-col gap-1">
