@@ -94,6 +94,7 @@ const getReportData = async (filters:any,report_name:any) => {
     const response = await axios.post(`${API_URL}/api/method/getreport`, payload, {
       headers: {
         "Content-Type": "application/json",
+        "Authorization": "token 671ee6fc8b2a7c9:5449015fae48ebd", 
       },
     });
 
