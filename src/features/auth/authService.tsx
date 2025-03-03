@@ -75,7 +75,11 @@ const getNetSalesReport = async (filters: {
 
 const getReportData = async (filters:any,report_name:any) => {
   console.log(report_name,"nnnnnnnnnnnnnnnnnnnnnnnnnnn");
-  
+  const convertToBackendDate = (dateString: string) => {
+    if (!dateString) return null;
+    const [day, month, year] = dateString.split("/").map(Number);
+    return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  };
   try {
     const payload = {
       report_name: report_name,
@@ -84,10 +88,10 @@ const getReportData = async (filters:any,report_name:any) => {
       offset:1,
       filters: [
         {
-          from_date: filters.fromDate,
-          to_date: filters.toDate,
-          // name: filters.name,
+          from_date: convertToBackendDate(filters.fromDate),
+          to_date: convertToBackendDate(filters.toDate),
         },
+
       ],
     };
 
