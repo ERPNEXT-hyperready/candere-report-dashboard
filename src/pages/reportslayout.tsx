@@ -1,10 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CircleChevronLeft, FileChartColumn } from "lucide-react";
-import { useNavigate , useLocation,} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ReportsLayout = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
 
   // Define report routes with optional :id parameter
   const reportRoutes = [

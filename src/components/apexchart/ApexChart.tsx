@@ -1,4 +1,3 @@
-import React from "react";
 import Chart from "react-apexcharts";
 
 const ApexChart = ({ dailyUpdates }:any) => {
@@ -23,7 +22,7 @@ const ApexChart = ({ dailyUpdates }:any) => {
       },
       dataLabels: {
         enabled: false, // Show values on bars
-        formatter: (value:any, { dataPointIndex }:any) => categories[dataPointIndex], // Show label instead of number
+        formatter: ( { dataPointIndex }:any) => categories[dataPointIndex], // Show label instead of number
         style: {
           colors: ["#000"], // Text color
         },

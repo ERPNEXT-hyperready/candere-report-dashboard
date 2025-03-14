@@ -24,7 +24,7 @@ import ReportsLayout from "./pages/reportslayout";
 import PriceConfig from "./pages/priceconfig";
 import IndividualPriceConfig from "./pages/patricularpriceconfig";
 import SalesInvoice from "./pages/SalesInvoice";
-import DailyUpdates from "./pages/DailyUpdates";
+// import DailyUpdates from "./pages/DailyUpdates";
 import EmployeeDetails from "./pages/EmployeeDetails";
 import InvoiceWiseCollectionSummary from "./pages/InvoiceWise CollectionSummary";
 import AllStores from "./pages/AllStores";
@@ -144,7 +144,16 @@ const App: React.FC = () => {
                       <Route path="*" element={<Navigate to="/dashboard" />} />
                       {/* // Daily Updates // */}
                       <Route path="/salesinvoice" element={<SalesInvoice />} />
-                      <Route path="/dailyupdate" element={<DailyUpdates />} />
+                      {/* <Route
+                        path="/dailyupdate"
+                        element={
+                          <DailyUpdates
+                            dailyUpdates={dailyUpdates}
+                            isDrawerOpen={isDrawerOpen}
+                            setIsDrawerOpen={setIsDrawerOpen}
+                          />
+                        }
+                      /> */}
                     </Routes>
                   </SidebarInset>
                 </div>

@@ -24,7 +24,7 @@ const Stockreport = () => {
 
   // Handle download with filters
   const handleDownload = async () => {
-    await authService.fetchAndDownloadReportNew(filters, decodedReportName);
+    await authService.fetchAndDownloadReporstNew(filters, decodedReportName);
   };
   return (
     <div className=" flex flex-col gap-2 h-full p-2 ">

@@ -11,7 +11,7 @@ import {
 } from "lucide-react"; // Import necessary icons
 import { useEffect, useState } from "react";
 import authService from "../features/auth/authService";
-import DailyUpdateComponent from "./DailyUpdates";
+// import DailyUpdateComponent from "./DailyUpdates";
 import ApexChart from "@/components/apexchart/ApexChart";
 
 // const companies = [
@@ -81,7 +81,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state: any) => state?.auth);
   const [dailyUpdates, setDailyUpdates] = useState<any>([]);
-  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  // const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -113,10 +113,10 @@ const Dashboard = () => {
     fetchData();
   }, []); //
   console.log(dailyUpdates, ">>>>>>>>>>>>>>>>>>>>>>>>>>");
-  const handleCardClick = () => {
-    // setSelectedData(dailyUpdates); // ✅ Store dailyUpdates
-    setIsDrawerOpen(true); // ✅ Open Drawer
-  };
+  // const handleCardClick = () => {
+  //   // setSelectedData(dailyUpdates); // ✅ Store dailyUpdates
+  //   setIsDrawerOpen(true); // ✅ Open Drawer
+  // };
   return (
     <div className="h-full w-full p-2">
       <div className="welcome-section pt-2">
