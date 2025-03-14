@@ -23,6 +23,16 @@ import Purchasereturnreport from "./pages/purchasereturnreport";
 import ReportsLayout from "./pages/reportslayout";
 import PriceConfig from "./pages/priceconfig";
 import IndividualPriceConfig from "./pages/patricularpriceconfig";
+import SalesInvoice from "./pages/SalesInvoice";
+import DailyUpdates from "./pages/DailyUpdates";
+import EmployeeDetails from "./pages/EmployeeDetails";
+import InvoiceWiseCollectionSummary from "./pages/InvoiceWise CollectionSummary";
+import AllStores from "./pages/AllStores";
+import PrevDayStockReport from "./pages/PrevDayStockReport";
+import ItemMasterCandere from "./pages/ItemMasterCandere";
+import NetSalesReportCDR from "./pages/NetSalesReportCDR";
+import BankBookReport from "./pages/BankBookReport";
+import CashBookReport from "./pages/CashBookReport";
 
 const App: React.FC = () => {
   const { user } = useSelector((state: any) => state?.auth);
@@ -45,6 +55,8 @@ const App: React.FC = () => {
     }
   }, [user]);
 
+  console.log("123 workign");
+
   return (
     <>
       {loading ? (
@@ -58,26 +70,81 @@ const App: React.FC = () => {
                 <div className="flex flex-1">
                   <AppSidebar variant="floating" />
                   <SidebarInset className="p-3">
-                  <Routes>
-              {/* Main Routes */}
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/profile" element={<Profile />} />
-
-              {/* Reports Parent Route */}
-              <Route path="/reports" element={<ReportsLayout />}/>
-                <Route path="stockreport/:report_name" element={<Stockreport />} />
-                <Route path="salesreport/:report_name" element={<Salesreport />} />
-                <Route path="salesreturn/:report_name" element={<Salesreturn />} />
-                <Route path="stockoutward/:report_name" element={<Stockoutward />} />
-                <Route path="stockinward/:report_name" element={<Stockinward />} />
-                <Route path="purchasereport/:report_name" element={<Purchasereport />} />
-                <Route path="purchasereturnreport/:report_name" element={<Purchasereturnreport />} />
-                <Route path="/priceconfig" element={<PriceConfig />} />
-                <Route path="/individualpriceconfig/:type" element={<IndividualPriceConfig />} />
-
-              
-
+                    <Routes>
+                      {/* Main Routes */}
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/profile" element={<Profile />} />
+                      {/* Reports Parent Route */}
+                      <Route path="/reports" element={<ReportsLayout />} />
+                      <Route
+                        path="stockreport/:report_name"
+                        element={<Stockreport />}
+                      />
+                      <Route
+                        path="salesreport/:report_name"
+                        element={<Salesreport />}
+                      />
+                      <Route
+                        path="salesreturn/:report_name"
+                        element={<Salesreturn />}
+                      />
+                      <Route
+                        path="stockoutward/:report_name"
+                        element={<Stockoutward />}
+                      />
+                      <Route
+                        path="stockinward/:report_name"
+                        element={<Stockinward />}
+                      />
+                      <Route
+                        path="purchasereport/:report_name"
+                        element={<Purchasereport />}
+                      />
+                      <Route
+                        path="purchasereturnreport/:report_name"
+                        element={<Purchasereturnreport />}
+                      />
+                      <Route
+                        path="employeedetails/:report_name"
+                        element={<EmployeeDetails />}
+                      />
+                      <Route
+                        path="/invoicewisecollectionsummary/:report_name"
+                        element={<InvoiceWiseCollectionSummary />}
+                      />
+                      <Route
+                        path="/allstores/:report_name"
+                        element={<AllStores />}
+                      />
+                      <Route
+                        path="/prevdaystockreport/:report_name"
+                        element={<PrevDayStockReport />}
+                      />
+                      <Route
+                        path="/itemmastercandere/:report_name"
+                        element={<ItemMasterCandere />}
+                      />
+                      <Route
+                        path="/netsalesreportcdr/:report_name"
+                        element={<NetSalesReportCDR />}
+                      />
+                      <Route
+                        path="/bankbookreport/:report_name"
+                        element={<BankBookReport />}
+                      />
+                      <Route
+                        path="/cashbookreport/:report_name"
+                        element={<CashBookReport />}
+                      />
+                      <Route path="/priceconfig" element={<PriceConfig />} />
+                      <Route
+                        path="/individualpriceconfig/:type"
+                        element={<IndividualPriceConfig />}
+                      />
                       <Route path="*" element={<Navigate to="/dashboard" />} />
+                      {/* // Daily Updates // */}
+                      <Route path="/salesinvoice" element={<SalesInvoice />} />
+                      <Route path="/dailyupdate" element={<DailyUpdates />} />
                     </Routes>
                   </SidebarInset>
                 </div>

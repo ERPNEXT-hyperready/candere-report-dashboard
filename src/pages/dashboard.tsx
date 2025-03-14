@@ -9,13 +9,10 @@ import {
   Database,
   ShoppingBasket,
 } from "lucide-react"; // Import necessary icons
-// import Autoplay from "embla-carousel-autoplay";
-// import {
-//   Carousel,
-//   CarouselContent,
-//   CarouselItem,
-// } from "@/components/ui/carousel";
-// import useEmblaCarousel from "embla-carousel-react";
+import { useEffect, useState } from "react";
+import authService from "../features/auth/authService";
+import DailyUpdateComponent from "./DailyUpdates";
+import ApexChart from "@/components/apexchart/ApexChart";
 
 // const companies = [
 //   {
@@ -83,13 +80,51 @@ import {
 const Dashboard = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state: any) => state?.auth);
+  const [dailyUpdates, setDailyUpdates] = useState<any>([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const today = new Date();
+        const formattedDate = `${today.getFullYear()}-${String(
+          today.getMonth() + 1
+        ).padStart(2, "0")}-${String(today.getDate()).padStart(
+          2,
+          "0"
+        )} 00:00:00`;
+
+        const payload = { new_date: formattedDate }; // ✅ Matches your required format
+
+        const data = await authService.daily_details(payload.new_date);
+
+        console.log("API Response:", data);
+
+        if (data) {
+          setDailyUpdates(data);
+        } else {
+          console.log("❌ No data found for key.");
+        }
+      } catch (error) {
+        console.error("❌ Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []); //
+  console.log(dailyUpdates, ">>>>>>>>>>>>>>>>>>>>>>>>>>");
+  const handleCardClick = () => {
+    // setSelectedData(dailyUpdates); // ✅ Store dailyUpdates
+    setIsDrawerOpen(true); // ✅ Open Drawer
+  };
   return (
-    <div className=" h-full w-full p-2">
+    <div className="h-full w-full p-2">
       <div className="welcome-section pt-2">
         <h1>
           Welcome{" "}
-          <span className="text-3xl font-bold text-gray-800">{user.full_name}</span>
+          <span className="text-3xl font-bold text-gray-800">
+            {user.full_name}
+          </span>
         </h1>
         {/* <div className="data-filter">
           <button className="filter-button active">All Data</button>
@@ -153,28 +188,21 @@ const Dashboard = () => {
           </CardContent>
         </Card>
       </div>
-      {/* <div>
-        <Carousel
-          plugins={[
-            Autoplay({
-              delay: 2000,
-            }),
-          ]}
-          className="w-full py-10"
-        >
-          <CarouselContent className="flex gap-5 sm:gap-20 items-center">
-            {companies.map(({ name, id, path }) => (
-              <CarouselItem key={id} className="basis-1/3 lg:basis-1/6 ">
-                <img
-                  src={path}
-                  alt={name}
-                  className="h-9 sm:h-14 object-contain"
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div> */}
+      <div className="flex flex-col justify-start items-start w-full gap-8">
+      <p className="text-3xl font-bold text-gray-800 pt-4">Today's Update</p>
+        {/* <Card className="quick-card" onClick={handleCardClick}> */}
+        {/* <CardContent> */}
+        {/* <DailyUpdateComponent
+            dailyUpdates={dailyUpdates}
+            isDrawerOpen={isDrawerOpen}
+            setIsDrawerOpen={setIsDrawerOpen}
+          /> */}
+        {/* </CardContent> */}
+        {/* </Card> */}
+
+        <ApexChart dailyUpdates={dailyUpdates} />
+
+      </div>
     </div>
   );
 };

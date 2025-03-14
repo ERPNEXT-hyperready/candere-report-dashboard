@@ -1,9 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CircleChevronLeft, FileChartColumn } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation,} from "react-router-dom";
 
 const ReportsLayout = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Define report routes with optional :id parameter
   const reportRoutes = [
@@ -34,6 +35,46 @@ const ReportsLayout = () => {
       name: "Purchase Return Report",
       bgColor: "bg-orange-200",
     },
+    {
+      path: "/employeedetails",
+      name: "Employee Details",
+      bgColor: "bg-lime-200",
+    },
+    {
+      path: "/invoicewisecollectionsummary",
+      name: "Invoice Wise Collection Summary",
+      bgColor: "bg-emerald-200",
+    },
+    {
+      path: "/allstores",
+      name: "All Stores",
+      bgColor: "bg-teal-200",
+    },
+    {
+      path: "/prevdaystockreport",
+      name: "Prev Day Stock Report",
+      bgColor: "bg-neutral-200",
+    },
+    {
+      path: "/itemmastercandere",
+      name: "Item Master Candere",
+      bgColor: "bg-stone-200",
+    },
+    {
+      path: "/netsalesreportcdr",
+      name: "Net Sales Report CDR",
+      bgColor: "bg-sky-200",
+    },
+    {
+      path: "/bankbookreport",
+      name: "Bank Book Report",
+      bgColor: "bg-rose-200",
+    },
+    {
+      path: "/cashbookreport",
+      name: "Cash Book Report",
+      bgColor: "bg-red-200",
+    }
   ];
 
   // const reportRoutes = [
@@ -47,6 +88,11 @@ const ReportsLayout = () => {
   // ];
   //             onClick={() => navigate("/stockreport/Stock Report")} // Redirect on click
 
+
+  // useEffect(() => {
+  //   localStorage.setItem("lastVisitedPage", location.pathname);
+  // }, [location]);
+  
   return (
     <div className="p-4  h-full w-full ">
       <div className="flex gap-2">
@@ -88,6 +134,7 @@ const ReportsLayout = () => {
           ))}
         </div>
       </div>
+      
     </div>
   );
 };

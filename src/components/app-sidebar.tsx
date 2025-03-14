@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   BookOpen,
+  Bot,
   // Bot,
   // Command,
   LifeBuoy,
@@ -40,8 +41,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         isActive: true,
       },
       // {
-      //   title: "Profile",
-      //   url: "/profile",
+      //   title: "Daily Updates",
+      //   url: "/dailyupdate",
       //   icon: Bot,
       // },
       {
@@ -80,8 +81,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         ],
       },
       // {
-      //   title: "Settings",
-      //   url: "/settings",
+      //   title: "Daily Updates",
+      //   url: "/salesinvoice",
       //   icon: Settings2,
       // },
     ],

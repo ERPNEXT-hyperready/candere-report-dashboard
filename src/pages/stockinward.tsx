@@ -25,7 +25,7 @@ const Stockinward = () => {
 
   // Handle download with filters
   const handleDownload = async () => {
-    await authService.fetchAndDownloadReportNew(filters, decodedReportName);
+    await authService.fetchAndDownloadReporstNew(filters, decodedReportName);
   };
 
   return (
