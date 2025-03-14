@@ -3,8 +3,8 @@ import qs from "qs"; // Import qs for encoding
 import { toast } from "sonner";
 import * as XLSX from "xlsx";
 
-const API_URL = "http://127.0.0.1:8000";
-// const API_URL = "http://43.205.164.37:8000";
+// const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://dev-erpnext.candere360.com";
 
 
 const login = async (userData: any) => {
