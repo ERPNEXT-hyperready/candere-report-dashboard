@@ -134,11 +134,11 @@ const login = async (userData: any) => {
 
 const getReportsData = async (filters:any,report_name:any) => {
   console.log(report_name,"nnnnnnnnnnnnnnnnnnnnnnnnnnn");
-  // const convertToBackendDate = (dateString: string) => {
-  //   if (!dateString) return null;
-  //   const [day, month, year] = dateString.split("/").map(Number);
-  //   return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-  // };
+  const convertToBackendDate = (dateString: string) => {
+    if (!dateString) return null;
+    const [day, month, year] = dateString.split("/").map(Number);
+    return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  };
   console.log(filters);
   
   try {
@@ -147,15 +147,14 @@ const getReportsData = async (filters:any,report_name:any) => {
       report_type: "json",
       limit:1000,
       offset:1,
-    //   filters: [
-    //     {
-    //       from_date: convertToBackendDate(filters.fromDate),
-    //       to_date: convertToBackendDate(filters.toDate),
-    //     },
+      filters: 
+        {
+          from_date: convertToBackendDate(filters.fromDate),
+          to_date: convertToBackendDate(filters.toDate),
+        },
 
-    //   ],
-    // }; 
-    } 
+      
+    };     
 
     const response = await axios.post(`${API_URL}/api/method/new_getreport`, payload, {
       headers: {
