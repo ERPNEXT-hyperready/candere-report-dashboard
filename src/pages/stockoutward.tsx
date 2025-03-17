@@ -10,23 +10,25 @@ const Stockoutward = () => {
   const { report_name } = useParams(); // Extracting the id from the URL
   const decodedReportName = decodeURIComponent(report_name || "");
   console.log("Received ID:", report_name);
-  const getCurrentDate = () => new Date().toISOString().split("T")[0];
   const [filters, setFilters] = useState({
-    fromDate: getCurrentDate(),
-    toDate: getCurrentDate(),
+    fromDate: "",
+    toDate: "",
     name: "",
   });
   // Handle input change
-//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     setFilters((prev) => ({ ...prev, [name]: value }));
-//   };
+  //   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     const { name, value } = e.target;
+  //     setFilters((prev) => ({ ...prev, [name]: value }));
+  //   };
 
   // Handle download with filters
   const handleDownload = async () => {
+    if (!filters.fromDate || !filters.toDate) {
+      alert("Please select both Start Date and End Date before downloading.");
+      return;
+    }
     await authService.fetchAndDownloadReporstNew(filters, decodedReportName);
   };
-  
 
   return (
     <div className="flex flex-col gap-2 h-full  p-2">
@@ -41,7 +43,7 @@ const Stockoutward = () => {
           <h1 className="text-2xl font-bold ">Stock Outward Report</h1>
         </div>
       </div>
-      
+
       <div className="lg:grid lg:grid-cols-2 lg:gap-4 md:grid md:grid-cols-1 md:gap-2 pt-2">
         <div className="flex flex-col gap-1">
           <DateRangePicker
@@ -58,7 +60,11 @@ const Stockoutward = () => {
         </div>
       </div>
       <div className="flex gap-2">
-        <Button onClick={handleDownload} className="bg-emerald-400">
+        <Button
+          onClick={handleDownload}
+          className="bg-emerald-400"
+          disabled={!filters.fromDate || !filters.toDate}
+        >
           <BsFillFileEarmarkExcelFill /> Download Excel
         </Button>
       </div>

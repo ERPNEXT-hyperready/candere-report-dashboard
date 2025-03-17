@@ -14,18 +14,21 @@ const Stockreport = () => {
   const decodedReportName = decodeURIComponent(report_name || "");
   console.log("Received ID in stock:", report_name);
   const [filters, setFilters] = useState({
-    fromDate: getCurrentDate(),
-    toDate: getCurrentDate(),
+    fromDate: "",
+    toDate: "",
     // name: "",
   });
   console.log("filters", filters);
 
-
-
   // Handle download with filters
   const handleDownload = async () => {
+    if (!filters.fromDate || !filters.toDate) {
+      alert("Please select both Start Date and End Date before downloading.");
+      return;
+    }
     await authService.fetchAndDownloadReporstNew(filters, decodedReportName);
   };
+
   return (
     <div className=" flex flex-col gap-2 h-full p-2 ">
       <div className="flex gap-2">
@@ -53,7 +56,11 @@ const Stockreport = () => {
         </div>
       </div>
       <div className="flex gap-2">
-        <Button onClick={handleDownload} className="bg-emerald-400">
+        <Button
+          onClick={handleDownload}
+          className="bg-emerald-400"
+          disabled={!filters.fromDate || !filters.toDate}
+        >
           <BsFillFileEarmarkExcelFill /> Download Excel
         </Button>
       </div>

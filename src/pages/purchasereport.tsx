@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import authService from "../features/auth/authService";
 import { Button } from "@/components/ui/button";
 import { BsFillFileEarmarkExcelFill } from "react-icons/bs";
@@ -26,6 +26,11 @@ function Purchasereport() {
 
   // Handle download with filters
   const handleDownload = async () => {
+    if (!filters.fromDate || !filters.toDate) {
+      alert("Please select both Start Date and End Date before downloading.");
+      return;
+    }
+
     await authService.fetchAndDownloadReporstNew(filters, decodedReportName);
   };
 
@@ -60,7 +65,11 @@ function Purchasereport() {
         </div>
       </div>
       <div className="flex gap-2">
-        <Button onClick={handleDownload} className="bg-emerald-400">
+        <Button
+          onClick={handleDownload}
+          className="bg-emerald-400"
+          disabled={!filters.fromDate || !filters.toDate}
+        >
           <BsFillFileEarmarkExcelFill /> Download Excel
         </Button>
       </div>

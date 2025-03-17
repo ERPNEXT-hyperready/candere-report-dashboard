@@ -152,8 +152,6 @@ const getReportsData = async (filters:any,report_name:any) => {
           from_date: convertToBackendDate(filters.fromDate),
           to_date: convertToBackendDate(filters.toDate),
         },
-
-      
     };     
 
     const response = await axios.post(`${API_URL}/api/method/new_getreport`, payload, {
@@ -237,7 +235,6 @@ export const daily_details = async (date: string | Date) => {
   } catch (error: any) {
     console.error("❌ Error fetching daily details:", error.response?.data || error.message);
 
-    // Show a toast error notification
     toast.error(error.response?.data?.message || "Failed to fetch daily details.");
 
     return null;

@@ -19,13 +19,17 @@ function SalesRegisterReport() {
   });
 
   // Handle input change
-//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     setFilters((prev) => ({ ...prev, [name]: value }));
-//   };
+  //   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     const { name, value } = e.target;
+  //     setFilters((prev) => ({ ...prev, [name]: value }));
+  //   };
 
   // Handle download with filters
   const handleDownload = async () => {
+    if (!filters.fromDate || !filters.toDate) {
+      alert("Please select both Start Date and End Date before downloading.");
+      return;
+    }
     await authService.fetchAndDownloadReporstNew(filters, decodedReportName);
   };
 
@@ -60,7 +64,11 @@ function SalesRegisterReport() {
         </div>
       </div>
       <div className="flex gap-2">
-        <Button onClick={handleDownload} className="bg-emerald-400">
+        <Button
+          onClick={handleDownload}
+          className="bg-emerald-400"
+          disabled={!filters.fromDate || !filters.toDate}
+        >
           <BsFillFileEarmarkExcelFill /> Download Excel
         </Button>
       </div>
