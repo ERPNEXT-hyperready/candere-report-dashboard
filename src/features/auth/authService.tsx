@@ -144,7 +144,7 @@ const getReportsData = async (filters:any,report_name:any) => {
   try {
     const payload = {
       report_name: report_name,
-      report_type: "json",
+      report_type: "csv",
       limit:1000,
       offset:1,
       filters: 
