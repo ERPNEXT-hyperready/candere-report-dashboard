@@ -7,7 +7,7 @@ import { CircleChevronLeft } from "lucide-react";
 
 import DateRangePicker from "@/components/fromtodate/romtodate";
 const Stockreport = () => {
-  const getCurrentDate = () => new Date().toISOString().split("T")[0];
+  // const getCurrentDate = () => new Date().toISOString().split("T")[0];
 
   const navigate = useNavigate();
   const { report_name } = useParams();
