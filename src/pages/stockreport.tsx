@@ -22,10 +22,10 @@ const Stockreport = () => {
 
   // Handle download with filters
   const handleDownload = async () => {
-    // if (!filters.fromDate || !filters.toDate) {
-    //   alert("Please select both Start Date and End Date before downloading.");
-    //   return;
-    // }
+    if (!filters.fromDate || !filters.toDate) {
+      alert("Please select both Start Date and End Date before downloading.");
+      return;
+    }
     await authService.fetchAndDownloadReporstNew(filters, decodedReportName);
   };
 
@@ -59,7 +59,7 @@ const Stockreport = () => {
         <Button
           onClick={handleDownload}
           className="bg-emerald-400"
-          // disabled={!filters.fromDate || !filters.toDate}
+          disabled={!filters.fromDate || !filters.toDate}
         >
           <BsFillFileEarmarkExcelFill /> Download Excel
         </Button>
