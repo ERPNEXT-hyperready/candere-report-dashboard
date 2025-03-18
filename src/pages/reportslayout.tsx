@@ -9,10 +9,10 @@ const ReportsLayout = () => {
   // Define report routes with optional :id parameter
   const reportRoutes = [
     { path: "/stockreport", name: "Stock Report", bgColor: "bg-green-200" },
-    { path: "/salesreport", name: "Sales Report", bgColor: "bg-blue-200" },
+    { path: "/salesreport", name: "GST Sales Register", bgColor: "bg-blue-200" },
     {
       path: "/salesreturn",
-      name: "Sales Return Report",
+      name: "GST Sales Return",
       bgColor: "bg-red-200",
     },
     {

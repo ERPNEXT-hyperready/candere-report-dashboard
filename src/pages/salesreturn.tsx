@@ -19,10 +19,10 @@ function Salesreturn() {
   });
 
   // Handle input change
-//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     setFilters((prev) => ({ ...prev, [name]: value }));
-//   };
+  //   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     const { name, value } = e.target;
+  //     setFilters((prev) => ({ ...prev, [name]: value }));
+  //   };
 
   // Handle download with filters
   const handleDownload = async () => {
@@ -43,9 +43,9 @@ function Salesreturn() {
           >
             <CircleChevronLeft className="text-gray-700" size={24} />
           </div>
-          <h1 className="text-2xl font-bold ">Sales Return Report</h1>
+          <h1 className="text-2xl font-bold ">GST Sales Return</h1>
         </div>
-        
+
         <div className="lg:grid lg:grid-cols-2 lg:gap-4 md:grid md:grid-cols-1 md:gap-2 pt-2">
           <div className="flex flex-col gap-1">
             <DateRangePicker
@@ -65,7 +65,11 @@ function Salesreturn() {
         </div>
       </div>
       <div className="flex gap-2">
-        <Button onClick={handleDownload} className="bg-emerald-400" disabled={!filters.fromDate || !filters.toDate}>
+        <Button
+          onClick={handleDownload}
+          className="bg-emerald-400"
+          disabled={!filters.fromDate || !filters.toDate}
+        >
           <BsFillFileEarmarkExcelFill /> Download Excel
         </Button>
       </div>

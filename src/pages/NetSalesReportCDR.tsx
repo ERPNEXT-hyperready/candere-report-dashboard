@@ -10,7 +10,7 @@ function NetSalesReportCDR() {
   const navigate = useNavigate();
   const { report_name } = useParams(); // Extracting the id from the URL
   const decodedReportName = decodeURIComponent(report_name || "");
-  
+
   console.log("Received ID:", report_name);
   // State for filters
   const [filters, setFilters] = useState({
@@ -20,10 +20,10 @@ function NetSalesReportCDR() {
   });
 
   // Handle input change
-//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     setFilters((prev) => ({ ...prev, [name]: value }));
-//   };
+  //   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     const { name, value } = e.target;
+  //     setFilters((prev) => ({ ...prev, [name]: value }));
+  //   };
 
   // Handle download with filters
   const handleDownload = async () => {
@@ -65,7 +65,11 @@ function NetSalesReportCDR() {
         </div>
       </div>
       <div className="flex gap-2">
-        <Button onClick={handleDownload} className="bg-emerald-400" disabled={!filters.fromDate || !filters.toDate}>
+        <Button
+          onClick={handleDownload}
+          className="bg-emerald-400"
+          disabled={!filters.fromDate || !filters.toDate}
+        >
           <BsFillFileEarmarkExcelFill /> Download Excel
         </Button>
       </div>

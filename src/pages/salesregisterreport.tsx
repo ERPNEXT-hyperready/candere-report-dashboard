@@ -43,7 +43,7 @@ function SalesRegisterReport() {
           >
             <CircleChevronLeft className="text-gray-700" size={24} />
           </div>
-          <h1 className="text-2xl font-bold ">Sales Report</h1>
+          <h1 className="text-2xl font-bold ">GST Sales Register</h1>
         </div>
         <div className="lg:grid lg:grid-cols-2 lg:gap-4 md:grid md:grid-cols-1 md:gap-2 pt-2">
           <div className="flex flex-col gap-1">

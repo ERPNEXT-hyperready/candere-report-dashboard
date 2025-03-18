@@ -19,10 +19,10 @@ function ItemMasterCandere() {
   });
 
   // Handle input change
-//   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = e.target;
-//     setFilters((prev) => ({ ...prev, [name]: value }));
-//   };
+  //   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     const { name, value } = e.target;
+  //     setFilters((prev) => ({ ...prev, [name]: value }));
+  //   };
 
   // Handle download with filters
   const handleDownload = async () => {
@@ -64,7 +64,11 @@ function ItemMasterCandere() {
         </div>
       </div>
       <div className="flex gap-2">
-        <Button onClick={handleDownload} className="bg-emerald-400" disabled={!filters.fromDate || !filters.toDate}>
+        <Button
+          onClick={handleDownload}
+          className="bg-emerald-400"
+          disabled={!filters.fromDate || !filters.toDate}
+        >
           <BsFillFileEarmarkExcelFill /> Download Excel
         </Button>
       </div>
