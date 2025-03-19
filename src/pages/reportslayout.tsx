@@ -8,7 +8,7 @@ const ReportsLayout = () => {
 
   // Define report routes with optional :id parameter
   const reportRoutes = [
-    { path: "/stockreport", name: "Stock Report", bgColor: "bg-green-200" },
+    // { path: "/stockreport", name: "Stock", bgColor: "bg-green-200" },
     { path: "/salesreport", name: "GST Sales Register", bgColor: "bg-blue-200" },
     {
       path: "/salesreturn",
@@ -17,12 +17,12 @@ const ReportsLayout = () => {
     },
     {
       path: "/stockoutward",
-      name: "Stock Outward Report",
+      name: "Stock Outward",
       bgColor: "bg-yellow-200",
     },
     {
       path: "/stockinward",
-      name: "Stock Inward Report",
+      name: "Stock Inward",
       bgColor: "bg-purple-200",
     },
     {
@@ -67,12 +67,12 @@ const ReportsLayout = () => {
     },
     {
       path: "/bankbookreport",
-      name: "Bank Book Report",
+      name: "Bank Book",
       bgColor: "bg-rose-200",
     },
     {
       path: "/cashbookreport",
-      name: "Cash Book Report",
+      name: "Cash Book",
       bgColor: "bg-red-200",
     }
   ];
