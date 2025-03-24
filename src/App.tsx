@@ -36,32 +36,18 @@ import CashBookReport from "./pages/CashBookReport";
 
 const App: React.FC = () => {
   const { user } = useSelector((state: any) => state?.auth);
-  const [isAuthenticated, setAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isAuthenticated, setAuthenticated] = useState(Boolean(user));
 
   useEffect(() => {
-    try {
-      setLoading(true);
-      if (user) {
-        setAuthenticated(true);
-      } else {
-        setAuthenticated(false);
-      }
-    } catch (err) {
-      console.log(err);
-      setAuthenticated(false);
-    } finally {
-      setLoading(false);
+    setAuthenticated(user ? true : false);
+    if (user) {
+      setAuthenticated(true);
     }
   }, [user]);
 
-  console.log("123 workign");
-
   return (
     <>
-      {loading ? (
-        <>Loading ...</>
-      ) : (
+
         <Router>
           {isAuthenticated ? (
             <div className="[--header-height:calc(theme(spacing.14))]">
@@ -167,7 +153,6 @@ const App: React.FC = () => {
           )}
           <Toaster position="top-right" richColors closeButton />
         </Router>
-      )}
     </>
   );
 };

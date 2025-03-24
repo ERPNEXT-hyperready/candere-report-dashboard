@@ -60,6 +60,7 @@ const Login: any = () => {
     dispatch(login(userData));
   };
 
+  console.log("checking in a", user)
   return (
     <div className="min-h-screen w-screen grid grid-cols-1 lg:grid-cols-2 bg-white">
       <div className="w-full hidden lg:block">
