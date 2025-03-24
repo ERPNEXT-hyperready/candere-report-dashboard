@@ -15,7 +15,7 @@ import { LogOut } from "lucide-react";
 import { logout } from "@/features/auth/authSlice";
 import { useDispatch } from "react-redux";
 const AlertDialogDemo = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -48,3 +48,4 @@ const AlertDialogDemo = () => {
 };
 
 export default AlertDialogDemo;
+

@@ -157,10 +157,11 @@ const getReportsData = async (filters:any,report_name:any) => {
     const response = await axios.post(`${API_URL}/api/method/new_getreport`, payload, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "token 671ee6fc8b2a7c9:1dba38d1e44a0d5", 
+        "Authorization": "token 671ee6fc8b2a7c9:0272eee472c7f01", 
+        // "Authorization": "token 671ee6fc8b2a7c9:20d402d02848c12", 
+
       },
     });
-
     console.log(response.data, "Received Report Data");
     return response.data;
   } catch (error) {

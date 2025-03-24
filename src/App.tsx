@@ -33,6 +33,7 @@ import ItemMasterCandere from "./pages/ItemMasterCandere";
 import NetSalesReportCDR from "./pages/NetSalesReportCDR";
 import BankBookReport from "./pages/BankBookReport";
 import CashBookReport from "./pages/CashBookReport";
+import InventoryValuation from "./pages/InventoryValuation";
 
 const App: React.FC = () => {
   const { user } = useSelector((state: any) => state?.auth);
@@ -121,6 +122,10 @@ const App: React.FC = () => {
                       <Route
                         path="/cashbookreport/:report_name"
                         element={<CashBookReport />}
+                      />
+                       <Route
+                        path="/inventoryvaluation/:report_name"
+                        element={<InventoryValuation />}
                       />
                       <Route path="/priceconfig" element={<PriceConfig />} />
                       <Route

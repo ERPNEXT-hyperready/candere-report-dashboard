@@ -74,6 +74,11 @@ const ReportsLayout = () => {
       path: "/cashbookreport",
       name: "Cash Book",
       bgColor: "bg-red-200",
+    },
+    {
+      path: "/inventoryvaluation",
+      name: "Inventory Valuation",
+      bgColor: "bg-red-200",
     }
   ];
 
